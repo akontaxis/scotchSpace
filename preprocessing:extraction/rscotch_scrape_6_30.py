@@ -22,7 +22,7 @@ urls = [url for url in rscotch.link.values]
 NEED TO USE A REDDIT USERNAME HERE
 '''
 
-user_agent = ("scotch review bot 0.1 by /u/YOUR_USERNAME_GOES_HERE")
+user_agent = ("scotch review bot 0.1 by /u/YOUR_USERNAME_HERE")
 r = praw.Reddit(user_agent = user_agent)
 
 
@@ -47,44 +47,6 @@ def convertReviews(review):
     else: return 'invalid url?'
         
 
-
 rscotch['review'] = rscotch['reviewText'].apply(convertReviews)
 rscotch.drop('reviewText', 1)
 rscotch.to_csv('rscotch_reviews.csv', encoding = 'utf-8')
-    
-
-
-
-''''
-def Find(pat, text):
-	match = re.search(pat, text)
-	if match: return match.group()
-	else:  
-		print 'No match found.'
-        return 're problem'
-        
-x
-
-def addPageReviews(url, mainData):
-	f = urllib2.urlopen(url)
-	doc = f.read()
-	soup = BeautifulSoup(doc)	
-	for item in whis.find_all('h2'):
-		itemData = []
-		for st in item.stripped_strings:       
-			if st not in exceptions:
-				itemData.append(st)
-		for sib in item.next_siblings:
-			if isinstance(sib, NavigableString) and st not in exceptions:
-				itemData.append(unicode(sib))
-		if itemData != []: mainData.append(itemData)
-	
-
-
-
-
-
-
-
-
-
